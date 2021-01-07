@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+* { margin:0; }
 
 .daisy-image {
   position: absolute;
@@ -6,8 +7,36 @@
   top: 15vh;
 }
 
-.body-text { 
+.daisy-name {
+  background: #FF9B3D;
+  color: #BE4E0C;
   font-family: 'Varela Round', sans-serif;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 18px;
+  font-size: 1.2em;
+  position: relative;
+  right: 18vw;
+  bottom: 21vh;
+}
+
+.daisy-text {
+  position: absolute;
+  left: 27vw;
+  top: 30vh; 
+  background: #FFFAE4;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #7C6B51;
+  border-radius: 25px;
+  padding: 20px;
+  padding-top: 30px;
+  width: 400px;
+  height: 80px;
+}
+
+.text-box {
+  position: absolute;
+  left: 15vw;
 }
