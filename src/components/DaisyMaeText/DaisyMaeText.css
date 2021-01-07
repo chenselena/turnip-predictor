@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.daisy-image {
+  position: absolute;
+  left: 15vw;
+  top: 15vh;
+}
+
+.body-text { 
+  font-family: 'Varela Round', sans-serif;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
