@@ -29,11 +29,17 @@
   font-weight: bold;
   color: #7C6B51;
   border-radius: 25px;
-  padding: 1.85rem 1.85rem 4.5rem;
+  padding: 1.85rem 1.85rem 2rem;
   width: 30rem;
   box-shadow: 0.25px 0px 4px #7a9e97;
+  line-height: 1.5em;
+}
+
+.daisy-buttons {
+  position: relative;
+  margin-top: 1rem;
 }
 
 .orange {
-  color: #FF9B3D;
+  color:#e58e03;
 }
