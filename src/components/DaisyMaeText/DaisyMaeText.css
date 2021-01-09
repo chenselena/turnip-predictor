@@ -2,9 +2,8 @@
 * { margin:0; }
 
 .daisy-image {
-  position: absolute;
-  left: 15vw;
-  top: 15vh;
+  position: fixed;
+  left: 25%;
 }
 
 .daisy-name {
@@ -12,25 +11,29 @@
   color: #BE4E0C;
   font-family: 'Varela Round', sans-serif;
   font-weight: bold;
-  padding: 15px;
+  padding: 1rem;
   border-radius: 18px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   position: relative;
-  right: 18vw;
-  bottom: 21vh;
+  right: 6vw;
+  top: 5vh;
 }
 
 .daisy-text {
   position: absolute;
-  left: 27vw;
-  top: 30vh; 
+  left: 38.5vw;
+  top: 11vh; 
   background: #FFFAE4;
   font-family: 'Varela Round', sans-serif;
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: bold;
   color: #7C6B51;
   border-radius: 25px;
-  padding: 30px;
-  width: 400px;
-  height: 80px;
+  padding: 1.85rem 1.85rem 4.5rem;
+  width: 30rem;
+  box-shadow: 0.25px 0px 4px #7a9e97;
+}
+
+.orange {
+  color: #FF9B3D;
 }
