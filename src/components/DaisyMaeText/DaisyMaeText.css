@@ -2,7 +2,7 @@
 * { margin:0; }
 
 .daisy-image {
-  position: fixed;
+  position: absolute;
   left: 25%;
 }
 
