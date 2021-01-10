@@ -43,3 +43,8 @@
 .orange {
   color:#e58e03;
 }
+
+.textbox {
+  position: absolute;
+  top: 50vh;
+}

@@ -48,7 +48,9 @@ function DaisyMaeText() {
           <ChoiceButton onClick={onClick}>No</ChoiceButton>
         </div>
       </div>
-      { click ? <TextBox /> : null }
+      <div className='textbox'>
+        { click ? <TextBox /> : null }
+      </div>
       <div className='daisy-name'>
         Daisy Mae
       </div>
