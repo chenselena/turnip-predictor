@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 import TextBox from '../TextBox/TextBox';
-import DaisyMaeImg from '../../images/daisy_mae_shadow.png';
 
 import './DaisyMaeText.css';
 
@@ -37,11 +36,11 @@ function DaisyMaeText() {
   const onClick = () => setClick(true);
 
   return (
-    <div>
-      <div className='daisy-image'>
-        <img src={DaisyMaeImg} alt="DaisyMaeImg" />
+    <div className='daisy-container'>
+      <div classname='daisy-name-position' id='daisy-name'>
+        Daisy Mae
       </div>
-      <div className='daisy-text'>
+      <div className='daisy-text-position' id='daisy-text'>
         Hello! Welcome to the <span className='orange'>Turnip Predictor</span>. I can help predict turnip prices throughout the week. Just a quick question, is this the first time anyone is buying turnips on your island? {'\n'}
         <div className='daisy-buttons'>
           <ChoiceButton onClick={onClick}>Yes</ChoiceButton>
@@ -50,9 +49,6 @@ function DaisyMaeText() {
       </div>
       <div className='textbox'>
         { click ? <TextBox /> : null }
-      </div>
-      <div className='daisy-name'>
-        Daisy Mae
       </div>
     </div>
   );

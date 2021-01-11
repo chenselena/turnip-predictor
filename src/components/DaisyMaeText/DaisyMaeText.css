@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 * { margin:0; }
 
-.daisy-image {
-  position: absolute;
-  left: 25%;
+.daisy-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-auto-rows: 50%;
 }
 
-.daisy-name {
+.daisy-name-position {
+}
+
+#daisy-name {
   background: #FF9B3D;
   color: #BE4E0C;
   font-family: 'Varela Round', sans-serif;
@@ -14,15 +22,10 @@
   padding: 1rem;
   border-radius: 18px;
   font-size: 1.1em;
-  position: relative;
-  right: 6vw;
-  top: 5vh;
+  z-index: 2;
 }
 
-.daisy-text {
-  position: absolute;
-  left: 38.5vw;
-  top: 11vh; 
+#daisy-text {
   background: #FFFAE4;
   font-family: 'Varela Round', sans-serif;
   font-size: 1.1em;
@@ -33,10 +36,14 @@
   width: 30rem;
   box-shadow: 0.25px 0px 4px #7a9e97;
   line-height: 1.5em;
+  z-index: 1;
+}
+
+.daisy-text-position {
+  margin-top: 30px;
 }
 
 .daisy-buttons {
-  position: relative;
   margin-top: 1rem;
 }
 
@@ -45,7 +52,15 @@
 }
 
 .textbox {
-  position: absolute;
-  top: 50vh;
+  /* top: 43%;
+  left: 22.5%; */
 }
-/* test */
+
+@media (max-width: 800px) {
+  .daisy-text {
+    max-width: 40%;
+  }
+  .textbox {
+    max-width: 40%;
+  }
+}

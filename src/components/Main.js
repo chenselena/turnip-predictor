@@ -1,17 +1,18 @@
 import React from 'react';
-import Fade from 'react-reveal/Fade';
 
 import DaisyMaeText from './DaisyMaeText/DaisyMaeText';
+import DaisyMaeImg from '../images/daisy_mae_shadow.png';
 import '../css/Main.css';
 
 function Main() {
   return (
     <div className='container'>
-      <Fade top>
-        <div className='daisy-mae'>
-          <DaisyMaeText />
-        </div>
-      </Fade>
+      <div className='daisy-image'>
+        <img src={DaisyMaeImg} alt="DaisyMaeImg" />
+      </div>
+      <div className='daisy-mae-text'>
+        <DaisyMaeText />
+      </div>
     </div>
   );
 }
