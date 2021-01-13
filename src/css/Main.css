@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+* { margin:0; }
 
 .container {
   background-image: url("../images/background.png");
-  height: 100vh;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.daisy-mae-text {
-  padding: 20px;
-  /* margin-bottom: 40%;
-  margin-right: 23%; */
+.daisy-mae-spacing {
+  margin-right: 43%;
 }
 
-.daisy-image {
-  position: absolute;
-  margin-right: 50%;
-  margin-bottom: 28%;
+.textbox {
+  margin-top: 1%;
+  margin-bottom: 10%;
+  position: relative;
 }

@@ -1,0 +1,18 @@
+* { margin:0; }
+
+.daisy-mae {
+	display: block;
+	position: relative;
+}
+
+.daisy-image {
+	display: inline-block;
+	margin-top: 3%;
+}
+
+.daisy-mae-text {
+	display: inline-block;
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 40%;
+}

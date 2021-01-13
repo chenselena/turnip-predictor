@@ -1,17 +1,18 @@
 import React from 'react';
 
-import DaisyMaeText from './DaisyMaeText/DaisyMaeText';
-import DaisyMaeImg from '../images/daisy_mae_shadow.png';
+import DaisyMae from './DaisyMae/DaisyMae';
+import TextBox from './TextBox/TextBox';
+
 import '../css/Main.css';
 
 function Main() {
   return (
     <div className='container'>
-      <div className='daisy-image'>
-        <img src={DaisyMaeImg} alt="DaisyMaeImg" />
+      <div className='daisy-mae-spacing'>
+        <DaisyMae />
       </div>
-      <div className='daisy-mae-text'>
-        <DaisyMaeText />
+      <div className='textbox'>
+        <TextBox />
       </div>
     </div>
   );

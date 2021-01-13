@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 * { margin:0; }
 
-.text-box {
+.text-box-container {
 	background: #FFFAE4;
   font-family: 'Varela Round', sans-serif;
   font-size: 1em;
@@ -13,6 +13,10 @@
   width: 50rem;
   text-align: center;
   line-height: 1.5em;
+}
+
+.text-box-style {
+  padding-top: 35px;
 }
 
 h1 {
