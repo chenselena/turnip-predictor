@@ -16,7 +16,11 @@
 }
 
 .text-box-style {
-  padding-top: 35px;
+  padding-top: 15px;
+}
+
+.input-style {
+  margin-top: 10px;
 }
 
 h1 {
