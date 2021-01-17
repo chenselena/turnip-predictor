@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Button, ButtonGroup } from "@material-ui/core";
 
-import ChoiceButton from "../ChoiceButton/ChoiceButton";
+import ChoiceButton from "../buttons/ChoiceButton";
 
 import "./DaisyMaeText.css";
 class DaisyMaeText extends React.Component {
@@ -14,8 +15,10 @@ class DaisyMaeText extends React.Component {
           question, is this the first time anyone is buying turnips on your
           island? {"\n"}
           <div className="daisy-buttons">
-            <ChoiceButton text={"Yes"} />
-            <ChoiceButton text={"No"} />
+            <ButtonGroup>
+              <ChoiceButton text={"Yes"} />
+              <ChoiceButton text={"No"} />
+            </ButtonGroup>
           </div>
         </div>
       </div>

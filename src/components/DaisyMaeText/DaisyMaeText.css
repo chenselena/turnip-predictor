@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-* { margin:0; }
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+* {
+  margin: 0;
+}
 
 .daisy-container {
   width: 100%;
@@ -11,25 +13,25 @@
 }
 
 .daisy-name {
-  background: #FF9B3D;
-  color: #BE4E0C;
-  font-family: 'Varela Round', sans-serif;
+  background: #ff9b3d;
+  color: #be4e0c;
+  font-family: "Varela Round", sans-serif;
   font-weight: bold;
   padding: 1rem;
   border-radius: 18px;
   font-size: 1em;
   z-index: 2;
-  margin-right: 65%;
+  margin-right: 69%;
   margin-bottom: 37%;
   position: absolute;
 }
 
 .daisy-text {
-  background: #FFFAE4;
-  font-family: 'Varela Round', sans-serif;
+  background: #fffae4;
+  font-family: "Varela Round", sans-serif;
   font-size: 1em;
   font-weight: bold;
-  color: #7C6B51;
+  color: #7c6b51;
   border-radius: 25px;
   padding: 1.85rem 1.85rem 2rem;
   width: 30rem;
@@ -44,7 +46,7 @@
 }
 
 .orange {
-  color:#e58e03;
+  color: #e58e03;
 }
 
 /* @media (max-width: 800px) {

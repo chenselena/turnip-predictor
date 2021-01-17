@@ -1,7 +1,7 @@
 import React from "react";
 
 import NumberInput from "../NumberInput/NumberInput";
-
+import PreviousPatternButton from "../buttons/PreviousPatternButton";
 import "./TextBox.css";
 
 function TextBox() {
@@ -15,6 +15,13 @@ function TextBox() {
       <div className="text-box-style">
         <h1>Previous Pattern</h1>
         What was your turnip pattern last week?
+        <div classname="pattern-buttons">
+          <PreviousPatternButton text={"Large Spike"} />
+          <PreviousPatternButton text={"Small Spike"} />
+          <PreviousPatternButton text={"Decreasing"} />
+          <PreviousPatternButton text={"Fluctuating"} />
+          <PreviousPatternButton text={"I don't know"} />
+        </div>
       </div>
       <div className="text-box-style">
         <h1>Previous Pattern</h1>
