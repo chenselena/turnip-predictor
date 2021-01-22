@@ -77,10 +77,10 @@ function WeekdayField(props) {
                         <Box
                           display="flex"
                           key={index}
-                          p={1}
+                          p={0.5}
                           width={{ xs: 0.5 }}
                         >
-                          <Box p={2} display="flex" flexDirection="column">
+                          <Box p={1}>
                             <Box m={1}>{prev.slice(-1)}</Box>
                             <Box m={1}>{curr}</Box>
                           </Box>
