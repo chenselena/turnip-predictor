@@ -29,7 +29,7 @@ const styles = {
     color: "#a18d70",
     fontFamily: "Varela Round",
     fontWeight: "bold",
-    fontSize: "1.1em",
+    fontSize: "0.9em",
   },
   cssLabel: {
     color: "#a18d70",
@@ -55,7 +55,7 @@ function WeekdayField(props) {
       type="number"
       label={weekdays[index]}
       fullWidth
-      InputProps={{ startAdornment: <BellsIcon /> }}
+      InputProps={{ startAdornment: <BellsIcon />, className: classes.input }}
       InputLabelProps={{
         shrink: true,
       }}
