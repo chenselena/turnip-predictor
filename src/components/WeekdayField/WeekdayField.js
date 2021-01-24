@@ -66,41 +66,31 @@ function WeekdayField(props) {
   return (
     <Box display="flex" flexDirection="column">
       <FormGroup>
-        <Box p={1} mb={-1} display="flex">
-          <Box
-            m={2}
-            ml={1}
-            mr={1}
-            display="flex"
-            flexWrap="wrap"
-            justifyContent="space-around"
-          >
-            {fields.reduce(
-              (prev, curr, index) =>
-                index % 2
-                  ? [
-                      ...prev.slice(0, -1),
+        <Box m={2} ml={1} mr={1} display="flex" flexWrap="flex">
+          {fields.reduce(
+            (prev, curr, index) =>
+              index % 2
+                ? [
+                    ...prev.slice(0, -1),
+                    <Box
+                      key={index}
+                      p={1}
+                      width={{ xs: 0.5, sm: 1 / 3, md: 1 / 6 }}
+                    >
                       <Box
-                        display="flex"
-                        key={index}
                         p={1}
-                        width={{ xs: 0.5, sm: 1 / 3, md: 1 / 6 }}
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="space-between"
                       >
-                        <Box
-                          p={1}
-                          display="flex"
-                          flexDirection="column"
-                          justifyContent="space-between"
-                        >
-                          <Box m={1}>{prev.slice(-1)}</Box>
-                          <Box m={1}>{curr}</Box>
-                        </Box>
-                      </Box>,
-                    ]
-                  : [...prev, curr],
-              []
-            )}
-          </Box>
+                        <Box m={1}>{prev.slice(-1)}</Box>
+                        <Box m={1}>{curr}</Box>
+                      </Box>
+                    </Box>,
+                  ]
+                : [...prev, curr],
+            []
+          )}
         </Box>
       </FormGroup>
     </Box>
