@@ -33,6 +33,9 @@ const styles = {
   },
   cssLabel: {
     color: "#a18d70",
+    fontFamily: "Varela Round",
+    fontWeight: "bold",
+    fontSize: "1.1em",
   },
 };
 
@@ -58,6 +61,7 @@ function WeekdayField(props) {
       InputProps={{ startAdornment: <BellsIcon />, className: classes.input }}
       InputLabelProps={{
         shrink: true,
+        className: classes.cssLabel,
       }}
       inputProps={{ pattern: "[0-9]*", tabIndex: 0 }}
     />
@@ -66,23 +70,19 @@ function WeekdayField(props) {
   return (
     <Box display="flex" flexDirection="column">
       <FormGroup>
-        <Box m={2} ml={1} mr={1} display="flex" flexWrap="flex">
+        <Box m={2} ml={1} mr={1} display="flex" justifyContent="center">
           {fields.reduce(
             (prev, curr, index) =>
               index % 2
                 ? [
                     ...prev.slice(0, -1),
                     <Box
+                      display="flex"
                       key={index}
                       p={1}
                       width={{ xs: 0.5, sm: 1 / 3, md: 1 / 6 }}
                     >
-                      <Box
-                        p={1}
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="space-between"
-                      >
+                      <Box p={0.5} display="flex" flexDirection="column">
                         <Box m={1}>{prev.slice(-1)}</Box>
                         <Box m={1}>{curr}</Box>
                       </Box>
