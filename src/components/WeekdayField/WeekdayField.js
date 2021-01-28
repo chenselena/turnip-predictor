@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import React, { useCallback, useState } from "react";
+import { PropTypes, arrayOf, string, func } from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Box, FormGroup } from "@material-ui/core";
 
 import BellsIcon from "../BellBagIcon/BellsIcon";
 
 import "./WeekdayField.css";
 
-const styles = {
+const useStyles = makeStyles(() => ({
   root: {
     "& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
       display: "none",
@@ -37,10 +37,26 @@ const styles = {
     fontWeight: "bold",
     fontSize: "1.1em",
   },
-};
+}));
 
-function WeekdayField(props) {
-  const { classes } = props;
+const WeekdayField = ({ inputs, onChange }) => {
+  const classes = useStyles();
+
+  const handleOnChange = useCallback(
+    (index) => ({
+      target: {
+        value,
+        validity: { valid },
+      },
+    }) => {
+      if (!valid) return;
+      const newInput = Array.from({ length: 13 }, (v, i) =>
+        index === i ? value : inputs[i]
+      );
+      onChange(newInput);
+    },
+    [inputs, onChange]
+  );
 
   const weekdays = [
     ..."Mon Tues Weds Thurs Fri Sat"
@@ -64,6 +80,7 @@ function WeekdayField(props) {
         className: classes.cssLabel,
       }}
       inputProps={{ pattern: "[0-9]*", tabIndex: 0 }}
+      onChange={handleOnChange}
     />
   ));
 
@@ -95,10 +112,11 @@ function WeekdayField(props) {
       </FormGroup>
     </Box>
   );
-}
-
-WeekdayField.propTypes = {
-  classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(WeekdayField);
+WeekdayField.propTypes = {
+  inputs: arrayOf(string).isRequired,
+  onChange: func.isRequired,
+};
+
+export default WeekdayField;
