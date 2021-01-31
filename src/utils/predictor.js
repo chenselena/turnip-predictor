@@ -1,3 +1,5 @@
+/* Full credit for this algorithm belongs to https://github.com/mikebryant/ac-nh-turnip-prices */
+
 const PATTERN = {
   FLUCTUATING: 0,
   LARGE_SPIKE: 1,
