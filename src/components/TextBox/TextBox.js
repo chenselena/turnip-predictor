@@ -3,7 +3,7 @@ import React from "react";
 import NumberInput from "../NumberInput/NumberInput";
 import PreviousPatternButton from "../buttons/PreviousPatternButton";
 import WeekdayField from "../WeekdayField/WeekdayField";
-import Chart from "../Chart/Chart";
+import PredictionTable from "../PredictionTable/PredictionTable";
 
 import "./TextBox.css";
 class TextBox extends React.Component {
@@ -12,7 +12,7 @@ class TextBox extends React.Component {
       <div className="text-box-container">
         <h1>Previous Pattern</h1>
         What was your turnip pattern last week?
-        <div classname="pattern-buttons">
+        <div className="pattern-buttons">
           <PreviousPatternButton text={"Large Spike"} />
           <PreviousPatternButton text={"Small Spike"} />
           <PreviousPatternButton text={"Decreasing"} />
@@ -27,7 +27,10 @@ class TextBox extends React.Component {
           </div>
           <WeekdayField />
         </div>
-        <Chart />
+        <div>
+          <h1>Prediction Chart</h1>
+          <PredictionTable />
+        </div>
       </div>
     );
   }

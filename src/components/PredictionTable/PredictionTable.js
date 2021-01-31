@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 
 import { Predictor } from "../../utils/predictor";
-function Chart() {
+function PredictionTable() {
   let pat_desc = {
     0: "fluctuating",
     1: "large-spike",
@@ -40,4 +40,4 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default PredictionTable;
