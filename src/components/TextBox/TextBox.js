@@ -3,6 +3,7 @@ import React from "react";
 import NumberInput from "../NumberInput/NumberInput";
 import PreviousPatternButton from "../buttons/PreviousPatternButton";
 import WeekdayField from "../WeekdayField/WeekdayField";
+import Chart from "../Chart/Chart";
 
 import "./TextBox.css";
 class TextBox extends React.Component {
@@ -26,6 +27,7 @@ class TextBox extends React.Component {
           </div>
           <WeekdayField />
         </div>
+        <Chart />
       </div>
     );
   }

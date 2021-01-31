@@ -5,8 +5,6 @@ import { TextField, Box, FormGroup } from "@material-ui/core";
 
 import BellsIcon from "../BellBagIcon/BellsIcon";
 
-import "./WeekdayField.css";
-
 const useStyles = makeStyles(() => ({
   root: {
     "& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
