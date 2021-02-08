@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+.number-input-styles {
+  padding-top: 10px;
+}
+
 .text-box-container {
   background: #fffae4;
   font-family: "Varela Round", sans-serif;
@@ -30,6 +34,11 @@
 
 .pattern-buttons {
   padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.daisy-buttons {
+  padding-bottom: 6px;
 }
 
 h1 {

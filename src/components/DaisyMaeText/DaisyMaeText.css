@@ -22,7 +22,7 @@
   font-size: 1em;
   z-index: 2;
   margin-right: 69%;
-  margin-bottom: 37%;
+  margin-bottom: 35%;
   position: absolute;
 }
 
@@ -33,16 +33,12 @@
   font-weight: bold;
   color: #7c6b51;
   border-radius: 25px;
-  padding: 1.85rem 1.85rem 2rem;
+  padding: 1.85rem 1.85rem 2.1rem;
   width: 30rem;
   box-shadow: 0.25px 0px 4px #7a9e97;
-  line-height: 1.5em;
+  line-height: 1.7em;
   z-index: 1;
   position: relative;
-}
-
-.daisy-buttons {
-  margin-top: 8px;
 }
 
 .orange {
