@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, TextField, FormGroup, Box } from "@material-ui/core";
 
 import BellsIcon from "../BellBagIcon/BellsIcon";
 import { Predictor } from "../../utils/predictor";
@@ -22,28 +22,17 @@ const prices = [
 ];
 
 function GetPredictionPrices(props) {
-  let prices = [
-    100,
-    100,
-    99,
-    98,
-    97,
-    96,
-    95,
-    NaN,
-    NaN,
-    NaN,
-    NaN,
-    NaN,
-    NaN,
-    NaN,
-  ];
-  let predict = new Predictor(prices, props.firstBuy, props.previousPattern);
+  let predict = new Predictor(
+    props.prices,
+    props.firstBuy,
+    props.previousPattern
+  );
   console.log("From prediction function this is first buy: " + props.firstBuy);
   console.log(
     "From prediction function this is previous pattern: " +
       props.previousPattern
   );
+  console.log("These are prices from predictor " + prices);
   let results = predict.analyze_possibilities();
   for (let res of results) {
     for (let day of res.prices.slice(2)) {
@@ -103,12 +92,19 @@ class Predictions extends React.Component {
     }
   }
 
-  handlePricesChange(e) {}
+  handlePricesChange(newPrice, i) {
+    const { prices } = this.state;
+    const newPrices = [...prices];
+    newPrices[i] = newPrice;
+    this.setState({ prices: newPrices });
+  }
 
   render() {
     const firstBuy = this.state.firstBuy;
     const previousPattern = this.state.previousPattern;
+    const { prices } = this.state;
     console.log(firstBuy);
+    console.log("These are prices" + prices);
     return (
       <div>
         <div>
@@ -138,11 +134,21 @@ class Predictions extends React.Component {
             Decreasing
           </Button>
         </div>
-        <div></div>
+        <div>
+          {prices.map((item, i) => (
+            <input
+              type="text"
+              key={i}
+              value={item}
+              onChange={(e) => this.handlePricesChange(e.target.value, i)}
+            ></input>
+          ))}
+        </div>
         <div>
           <GetPredictionPrices
             firstBuy={firstBuy}
             previousPattern={previousPattern}
+            prices={prices}
           />
         </div>
       </div>
