@@ -1,44 +1,35 @@
 import React from "react";
-import { Button, TextField, FormGroup, Box } from "@material-ui/core";
+import { Button, TextField, FormGroup, Box, Radio } from "@material-ui/core";
+import memoize from "memoize-one";
 
 import BellsIcon from "../BellBagIcon/BellsIcon";
 import { Predictor } from "../../utils/predictor";
 
-const prices = [
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-  NaN,
-];
+const prices = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
 function GetPredictionPrices(props) {
-  let predict = new Predictor(
-    props.prices,
-    props.firstBuy,
-    props.previousPattern
-  );
+  if (
+    props.firstBuy == null ||
+    props.previousPattern == -2 ||
+    isNaN(props.prices[0]) ||
+    isNaN(props.prices[1]) ||
+    isNaN(props.prices[2])
+  ) {
+    return <div>Prices not ready yet</div>;
+  }
+  let newPrices = [props.sundayPrice, props.sundayPrice, ...props.prices];
+  let predict = new Predictor(newPrices, props.firstBuy, props.previousPattern);
   console.log("From prediction function this is first buy: " + props.firstBuy);
   console.log(
     "From prediction function this is previous pattern: " +
       props.previousPattern
   );
-  console.log("These are prices from predictor " + prices);
   let results = predict.analyze_possibilities();
   for (let res of results) {
-    for (let day of res.prices.slice(2)) {
-      // console.log("Day min: " + day.min);
-      // console.log("Day max: " + day.max);
-    }
+    // for (let day of res.prices.slice(2)) {
+    //   // console.log("Day min: " + day.min);
+    //   // console.log("Day max: " + day.max);
+    // }
     // console.log("guaranteed min" + res.weekGuaranteedMinimum);
     // console.log("week max: " + res.weekMax);
     return (
@@ -48,7 +39,7 @@ function GetPredictionPrices(props) {
       </div>
     );
   }
-  console.log("this is the prices" + prices);
+  console.log("this is the prices" + newPrices);
 }
 
 class Predictions extends React.Component {
@@ -59,33 +50,40 @@ class Predictions extends React.Component {
       this
     );
     this.handlePricesChange = this.handlePricesChange.bind(this);
+    this.handleSundayPriceChange = this.handleSundayPriceChange.bind(this);
     this.state = {
-      firstBuy: false,
+      firstBuy: null,
       previousPattern: -2,
       prices,
+      sundayPrice: NaN,
     };
   }
+
+  // componentDidMount = () => {
+  //   const localFirstBuy =
+  //     localStorage.getItem("firstBuy") || this.state.firstBuy;
+  //   this.setState({ firstBuy: localFirstBuy });
+  // };
 
   onClearPrices = () => {
     this.setState({ prices });
   };
 
   handleFirstBuyChange(e) {
-    if (e.currentTarget.id == 1) {
-      this.setState({ firstBuy: true });
-    } else {
-      this.setState({ firstBuy: false });
-    }
+    const isFirstBuy = e.currentTarget.value === "true" ? true : false;
+    this.setState({ firstBuy: isFirstBuy });
+    // this.setState({ firstBuy: localStorage.getItem("firstBuy") });
   }
 
   handlePreviousPatternChange(e) {
-    if (e.currentTarget.id == 1) {
+    console.log("pattern " + e.currentTarget.value);
+    if (e.currentTarget.value == "-1") {
       this.setState({ previousPattern: -1 });
-    } else if (e.currentTarget.id == 2) {
+    } else if (e.currentTarget.value == "0") {
       this.setState({ previousPattern: 0 });
-    } else if (e.currentTarget.id == 3) {
+    } else if (e.currentTarget.value == "3") {
       this.setState({ previousPattern: 3 });
-    } else if (e.currentTarget.id == 4) {
+    } else if (e.currentTarget.value == "1") {
       this.setState({ previousPattern: 1 });
     } else {
       this.setState({ previousPattern: 2 });
@@ -99,49 +97,110 @@ class Predictions extends React.Component {
     this.setState({ prices: newPrices });
   }
 
+  handleSundayPriceChange(newSundayPrice) {
+    this.setState({ sundayPrice: newSundayPrice });
+  }
+
   render() {
     const firstBuy = this.state.firstBuy;
     const previousPattern = this.state.previousPattern;
+    const sundayPrice = this.state.sundayPrice;
     const { prices } = this.state;
-    console.log(firstBuy);
+    console.log("is first buy: " + firstBuy);
     console.log("These are prices" + prices);
     return (
       <div>
         <div>
           <h1>Is this your first buy?</h1>
-          <Button id={1} onClick={this.handleFirstBuyChange}>
+          <label>
+            <input
+              type="radio"
+              value="true"
+              checked={firstBuy == true}
+              onChange={this.handleFirstBuyChange}
+            />
             Yes
-          </Button>
-          <Button id={2} onClick={this.handleFirstBuyChange}>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="false"
+              checked={firstBuy == false}
+              onChange={this.handleFirstBuyChange}
+            />
             No
-          </Button>
+          </label>
         </div>
         <div>
           <h1>What was last week's turnip pattern?</h1>
-          <Button id={1} onClick={this.handlePreviousPatternChange}>
+          <label>
+            <input
+              type="radio"
+              value="-1"
+              checked={previousPattern === -1}
+              onChange={this.handlePreviousPatternChange}
+            />
             I don't know
-          </Button>
-          <Button id={2} onClick={this.handlePreviousPatternChange}>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="0"
+              checked={previousPattern === 0}
+              onChange={this.handlePreviousPatternChange}
+            />
             Fluctuating
-          </Button>
-          <Button id={3} onClick={this.handlePreviousPatternChange}>
-            Small Spike
-          </Button>
-          <Button id={4} onClick={this.handlePreviousPatternChange}>
-            Large Spike
-          </Button>
-          <Button id={5} onClick={this.handlePreviousPatternChange}>
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="3"
+              checked={previousPattern === 3}
+              onChange={this.handlePreviousPatternChange}
+            />
+            Small spike
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="1"
+              checked={previousPattern === 1}
+              onChange={this.handlePreviousPatternChange}
+            />
+            Large spike
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="2"
+              checked={previousPattern === 2}
+              onChange={this.handlePreviousPatternChange}
+            />
             Decreasing
-          </Button>
+          </label>
         </div>
         <div>
+          <h1>Prices</h1>
+          <p>Sunday</p>
+          <input
+            type="number"
+            value={sundayPrice}
+            onChange={(e) => this.handleSundayPriceChange(e.target.value)}
+          />
+          <p>Monday - Saturday</p>
           {prices.map((item, i) => (
+            // <TextField
+            //   key={i}
+            //   type="number"
+            //   value={item}
+            //   onChange={(e) => this.handlePricesChange(e.target.value, i)}
+            // />
             <input
-              type="text"
+              type="number"
               key={i}
               value={item}
               onChange={(e) => this.handlePricesChange(e.target.value, i)}
-            ></input>
+            />
           ))}
         </div>
         <div>
@@ -149,10 +208,12 @@ class Predictions extends React.Component {
             firstBuy={firstBuy}
             previousPattern={previousPattern}
             prices={prices}
+            sundayPrice={sundayPrice}
           />
         </div>
       </div>
     );
   }
 }
+
 export default Predictions;
