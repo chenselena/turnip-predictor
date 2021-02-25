@@ -1,7 +1,16 @@
 import React from "react";
-import { Button, TextField, FormGroup, Box, Radio } from "@material-ui/core";
-import memoize from "memoize-one";
-
+import {
+  Table as MaterialTable,
+  TableBody,
+  TableCell as MaterialTableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  makeStyles,
+  IconButton,
+  Box,
+} from "@material-ui/core";
+import _ from "lodash";
 import BellsIcon from "../BellBagIcon/BellsIcon";
 import { Predictor } from "../../utils/predictor";
 
@@ -17,6 +26,13 @@ function GetPredictionPrices(props) {
   ) {
     return <div>Prices not ready yet</div>;
   }
+  let pat_desc = {
+    0: "fluctuating",
+    1: "large-spike",
+    2: "decreasing",
+    3: "small-spike",
+    4: "all",
+  };
   let newPrices = [props.sundayPrice, props.sundayPrice, ...props.prices];
   let predict = new Predictor(newPrices, props.firstBuy, props.previousPattern);
   console.log("From prediction function this is first buy: " + props.firstBuy);
@@ -25,21 +41,22 @@ function GetPredictionPrices(props) {
       props.previousPattern
   );
   let results = predict.analyze_possibilities();
-  for (let res of results) {
-    // for (let day of res.prices.slice(2)) {
-    //   // console.log("Day min: " + day.min);
-    //   // console.log("Day max: " + day.max);
-    // }
-    // console.log("guaranteed min" + res.weekGuaranteedMinimum);
-    // console.log("week max: " + res.weekMax);
-    return (
-      <div>
-        <div>{res.weekGuaranteedMinimum}</div>
-        <div>{res.weekMax}</div>
-      </div>
-    );
-  }
-  console.log("this is the prices" + newPrices);
+  return (
+    <table>
+      <tbody>
+        {results.map((res, i) => (
+          <tr key={i}>
+            {res.prices.slice(2).map((day, i) => (
+              <tr key={i}>
+                <td>{day.min}</td>
+                <td>{day.max}</td>
+              </tr>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 class Predictions extends React.Component {
