@@ -16,6 +16,21 @@ import { Predictor } from "../../utils/predictor";
 
 const prices = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
+const displayPercentage = function (fraction) {
+  if (Number.isFinite(fraction)) {
+    let percent = fraction * 100;
+    if (percent >= 1) {
+      return percent.toPrecision(3) + "%";
+    } else if (percent >= 0.01) {
+      return percent.toFixed(2) + "%";
+    } else {
+      return "<0.01%";
+    }
+  } else {
+    return "—";
+  }
+};
+
 function GetPredictionPrices(props) {
   if (
     props.firstBuy == null ||
@@ -33,6 +48,19 @@ function GetPredictionPrices(props) {
     3: "small-spike",
     4: "all",
   };
+  let titles = [
+    "Pattern",
+    "% Chance",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Guaranteed Minimum",
+    "Potential Maximum",
+  ];
+
   let newPrices = [props.sundayPrice, props.sundayPrice, ...props.prices];
   let predict = new Predictor(newPrices, props.firstBuy, props.previousPattern);
   console.log("From prediction function this is first buy: " + props.firstBuy);
@@ -43,15 +71,29 @@ function GetPredictionPrices(props) {
   let results = predict.analyze_possibilities();
   return (
     <table>
+      <thead>
+        {/* {titles.map((title, i) => (
+          <th>{title}</th>
+        ))} */}
+      </thead>
       <tbody>
         {results.map((res, i) => (
           <tr key={i}>
+            <td>{pat_desc[res.pattern_number]}</td>
             {res.prices.slice(2).map((day, i) => (
-              <tr key={i}>
-                <td>{day.min}</td>
-                <td>{day.max}</td>
-              </tr>
+              <span>
+                {day.min == day.max ? (
+                  <td>{day.min}</td>
+                ) : (
+                  <td>
+                    {day.min} to {day.max}
+                  </td>
+                )}
+                {/* {day.min} to {day.max} */}
+              </span>
             ))}
+            <td>{res.weekGuaranteedMinimum}</td>
+            <td>{res.weekMax}</td>
           </tr>
         ))}
       </tbody>
@@ -125,6 +167,14 @@ class Predictions extends React.Component {
     const { prices } = this.state;
     console.log("is first buy: " + firstBuy);
     console.log("These are prices" + prices);
+    const weekdays = [
+      ..."Mon Tues Weds Thurs Fri Sat"
+        .split(" ")
+        .reduce(
+          (curr, day) => [...curr, ...[`${day} ${"AM"}`, `${day} ${"PM"}`]],
+          []
+        ),
+    ];
     return (
       <div>
         <div>
