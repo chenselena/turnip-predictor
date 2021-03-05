@@ -36,10 +36,14 @@ function GetPredictionPrices(props) {
     props.firstBuy == null ||
     props.previousPattern == -2 ||
     isNaN(props.prices[0]) ||
-    isNaN(props.prices[1]) ||
-    isNaN(props.prices[2])
+    isNaN(props.prices[1])
   ) {
-    return <div>Prices not ready yet</div>;
+    return (
+      <div>
+        We don't have enough information to calculate your prices yet. Come back
+        with your prices in the afternoon!
+      </div>
+    );
   }
   let pat_desc = {
     0: "fluctuating",
@@ -48,18 +52,6 @@ function GetPredictionPrices(props) {
     3: "small-spike",
     4: "all",
   };
-  let titles = [
-    "Pattern",
-    "% Chance",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Guaranteed Minimum",
-    "Potential Maximum",
-  ];
 
   let newPrices = [props.sundayPrice, props.sundayPrice, ...props.prices];
   let predict = new Predictor(newPrices, props.firstBuy, props.previousPattern);
@@ -69,29 +61,47 @@ function GetPredictionPrices(props) {
       props.previousPattern
   );
   let results = predict.analyze_possibilities();
+
+  const weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   return (
     <table>
       <thead>
-        {/* {titles.map((title, i) => (
-          <th>{title}</th>
-        ))} */}
+        <tr>
+          <th>Pattern</th>
+          <th>% Chance</th>
+          {weekdays.map((day) => (
+            <th colSpan={2}>
+              <div>{day}</div>
+              <span>AM</span>
+              <span>PM</span>
+            </th>
+          ))}
+          <th>Guaranteed Minimum</th>
+          <th>Potential Maximum</th>
+        </tr>
       </thead>
       <tbody>
         {results.map((res, i) => (
           <tr key={i}>
             <td>{pat_desc[res.pattern_number]}</td>
-            {res.prices.slice(2).map((day, i) => (
-              <span>
-                {day.min == day.max ? (
-                  <td>{day.min}</td>
-                ) : (
-                  <td>
-                    {day.min} to {day.max}
-                  </td>
-                )}
-                {/* {day.min} to {day.max} */}
-              </span>
-            ))}
+            <td>{displayPercentage(res.category_total_probability)}</td>
+            {res.prices.slice(2).map((day) =>
+              day.min == day.max ? (
+                <td>{day.min}</td>
+              ) : (
+                <td>
+                  {day.min} to {day.max}
+                </td>
+              )
+            )}
             <td>{res.weekGuaranteedMinimum}</td>
             <td>{res.weekMax}</td>
           </tr>
@@ -167,14 +177,6 @@ class Predictions extends React.Component {
     const { prices } = this.state;
     console.log("is first buy: " + firstBuy);
     console.log("These are prices" + prices);
-    const weekdays = [
-      ..."Mon Tues Weds Thurs Fri Sat"
-        .split(" ")
-        .reduce(
-          (curr, day) => [...curr, ...[`${day} ${"AM"}`, `${day} ${"PM"}`]],
-          []
-        ),
-    ];
     return (
       <div>
         <div>
