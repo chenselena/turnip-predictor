@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  Table as MaterialTable,
-  TableBody,
-  TableCell as MaterialTableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  makeStyles,
-  IconButton,
-  Box,
-} from "@material-ui/core";
 import _ from "lodash";
+import PriceChart from "../Chart/Chart";
 import BellsIcon from "../BellBagIcon/BellsIcon";
+
 import { Predictor } from "../../utils/predictor";
+
+import "./Predictions.css";
 
 const prices = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
@@ -72,42 +65,51 @@ function GetPredictionPrices(props) {
   ];
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Pattern</th>
-          <th>% Chance</th>
-          {weekdays.map((day) => (
-            <th colSpan={2}>
-              <div>{day}</div>
-              <span>AM</span>
-              <span>PM</span>
-            </th>
-          ))}
-          <th>Guaranteed Minimum</th>
-          <th>Potential Maximum</th>
-        </tr>
-      </thead>
-      <tbody>
-        {results.map((res, i) => (
-          <tr key={i}>
-            <td>{pat_desc[res.pattern_number]}</td>
-            <td>{displayPercentage(res.category_total_probability)}</td>
-            {res.prices.slice(2).map((day) =>
-              day.min == day.max ? (
-                <td>{day.min}</td>
-              ) : (
-                <td>
-                  {day.min} to {day.max}
-                </td>
-              )
-            )}
-            <td>{res.weekGuaranteedMinimum}</td>
-            <td>{res.weekMax}</td>
+    <div>
+      <div
+        style={{
+          width: "80%",
+        }}
+      >
+        <PriceChart results={results} />
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Pattern</th>
+            <th>% Chance</th>
+            {weekdays.map((day) => (
+              <th colSpan={2}>
+                <div>{day}</div>
+                <span>AM</span>
+                <span>PM</span>
+              </th>
+            ))}
+            <th>Guaranteed Minimum</th>
+            <th>Potential Maximum</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {results.map((res, i) => (
+            <tr key={i}>
+              <td>{pat_desc[res.pattern_number]}</td>
+              <td>{displayPercentage(res.category_total_probability)}</td>
+              {res.prices.slice(2).map((day) =>
+                day.min == day.max ? (
+                  <td>{day.min}</td>
+                ) : (
+                  <td>
+                    {day.min} to {day.max}
+                  </td>
+                )
+              )}
+              <td>{res.weekGuaranteedMinimum}</td>
+              <td>{res.weekMax}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -128,12 +130,6 @@ class Predictions extends React.Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   const localFirstBuy =
-  //     localStorage.getItem("firstBuy") || this.state.firstBuy;
-  //   this.setState({ firstBuy: localFirstBuy });
-  // };
-
   onClearPrices = () => {
     this.setState({ prices });
   };
@@ -141,7 +137,6 @@ class Predictions extends React.Component {
   handleFirstBuyChange(e) {
     const isFirstBuy = e.currentTarget.value === "true" ? true : false;
     this.setState({ firstBuy: isFirstBuy });
-    // this.setState({ firstBuy: localStorage.getItem("firstBuy") });
   }
 
   handlePreviousPatternChange(e) {
@@ -178,9 +173,10 @@ class Predictions extends React.Component {
     console.log("is first buy: " + firstBuy);
     console.log("These are prices" + prices);
     return (
-      <div>
-        <div>
-          <h1>Is this your first buy?</h1>
+      <div className="prediction-container">
+        <div className="first-buy-buttons">
+          <h1>Is this your first time buying turnips?</h1>
+          <div>This will affect your pattern!</div>
           <label>
             <input
               type="radio"
@@ -201,7 +197,8 @@ class Predictions extends React.Component {
           </label>
         </div>
         <div>
-          <h1>What was last week's turnip pattern?</h1>
+          <h1>Previous Pattern</h1>
+          <div>What was your turnip pattern last week?</div>
           <label>
             <input
               type="radio"
@@ -249,7 +246,10 @@ class Predictions extends React.Component {
           </label>
         </div>
         <div>
-          <h1>Prices</h1>
+          <h1>Price of Turnips</h1>
+          <div>
+            What was the price of your turnips this week, on your island?
+          </div>
           <p>Sunday</p>
           <input
             type="number"
