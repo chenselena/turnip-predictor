@@ -12,17 +12,72 @@
   box-shadow: 0.25px 0px 4px #7a9e97;
 }
 
-.first-buy-buttons {
+.input-buttons {
   font-family: "Varela Round", sans-serif;
   font-weight: bold;
-  padding-bottom: 10px;
+  padding-bottom: 28px;
 }
 
-label {
+.input-buttons input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.input-buttons label {
+  display: inline-block;
+  background-color: #7ccfae;
+  padding: 10px 20px;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px dashed #06a27a;
+  border-radius: 8px;
+  margin: 7px;
+  color: #238770;
+  box-shadow: 0.3px 0px 3px #ada995;
+}
+
+.input-buttons input[type="radio"]:checked + label {
+  background-color: #33ab8f;
+  border-color: #7ccfae;
+  color: #fff;
+}
+
+.input-buttons input[type="radio"]:focus + label {
+  background-color: #33ab8f;
+  border: 2px dashed #7ccfae;
+  color: #fff;
+}
+
+.input-buttons input[type="radio"]:hover + label {
+  background-color: #33ab8f;
+  border: 2px dashed #7ccfae;
+  box-shadow: 2px 3.5px 7px #ada995;
+  color: #fff;
+}
+
+.input-buttons h1 {
   color: #7c6b51;
+  font-size: 1.2em;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
 }
 
-h1 {
+.secondary-text {
+  color: #99876d;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-size: 0.96em;
+}
+
+.price-input {
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  padding-bottom: 28px;
+}
+
+.price-input h1 {
   color: #7c6b51;
   font-size: 1.2em;
   font-family: "Varela Round", sans-serif;

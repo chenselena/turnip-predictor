@@ -9,6 +9,9 @@ import "./Predictions.css";
 
 const prices = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
 
+/* ******** 
+credit for the displayPercentage function belongs to https://github.com/mikebryant/ac-nh-turnip-prices 
+*/
 const displayPercentage = function (fraction) {
   if (Number.isFinite(fraction)) {
     let percent = fraction * 100;
@@ -23,18 +26,27 @@ const displayPercentage = function (fraction) {
     return "—";
   }
 };
+/* ******* */
+
+const weekdays = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 function GetPredictionPrices(props) {
   if (
     props.firstBuy == null ||
     props.previousPattern == -2 ||
-    isNaN(props.prices[0]) ||
-    isNaN(props.prices[1])
+    isNaN(props.prices[0])
   ) {
     return (
       <div>
-        We don't have enough information to calculate your prices yet. Come back
-        with your prices in the afternoon!
+        We don't have enough information to calculate your prices yet. Help us
+        out by filling out the information above!
       </div>
     );
   }
@@ -54,16 +66,6 @@ function GetPredictionPrices(props) {
       props.previousPattern
   );
   let results = predict.analyze_possibilities();
-
-  const weekdays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
   return (
     <div>
       <div
@@ -174,80 +176,75 @@ class Predictions extends React.Component {
     console.log("These are prices" + prices);
     return (
       <div className="prediction-container">
-        <div className="first-buy-buttons">
+        <div className="input-buttons">
           <h1>Is this your first time buying turnips?</h1>
-          <div>This will affect your pattern!</div>
-          <label>
-            <input
-              type="radio"
-              value="true"
-              checked={firstBuy == true}
-              onChange={this.handleFirstBuyChange}
-            />
-            Yes
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="false"
-              checked={firstBuy == false}
-              onChange={this.handleFirstBuyChange}
-            />
-            No
-          </label>
+          <div className="secondary-text">This will affect your pattern!</div>
+          <input
+            id="first-buy-yes"
+            type="radio"
+            value="true"
+            checked={firstBuy == true}
+            onChange={this.handleFirstBuyChange}
+          />
+          <label htmlFor="first-buy-yes">Yes</label>
+          <input
+            id="first-buy-no"
+            type="radio"
+            value="false"
+            checked={firstBuy == false}
+            onChange={this.handleFirstBuyChange}
+          />
+          <label htmlFor="first-buy-no">No</label>
         </div>
-        <div>
+        <div className="input-buttons">
           <h1>Previous Pattern</h1>
-          <div>What was your turnip pattern last week?</div>
-          <label>
-            <input
-              type="radio"
-              value="-1"
-              checked={previousPattern === -1}
-              onChange={this.handlePreviousPatternChange}
-            />
-            I don't know
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="0"
-              checked={previousPattern === 0}
-              onChange={this.handlePreviousPatternChange}
-            />
-            Fluctuating
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="3"
-              checked={previousPattern === 3}
-              onChange={this.handlePreviousPatternChange}
-            />
-            Small spike
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="1"
-              checked={previousPattern === 1}
-              onChange={this.handlePreviousPatternChange}
-            />
-            Large spike
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="2"
-              checked={previousPattern === 2}
-              onChange={this.handlePreviousPatternChange}
-            />
-            Decreasing
-          </label>
+          <div className="secondary-text">
+            What was your turnip pattern last week?
+          </div>
+          <input
+            id="pattern-idk"
+            type="radio"
+            value="-1"
+            checked={previousPattern === -1}
+            onChange={this.handlePreviousPatternChange}
+          />
+          <label htmlFor="pattern-idk">I don't know</label>
+          <input
+            id="pattern-fluctuating"
+            type="radio"
+            value="0"
+            checked={previousPattern === 0}
+            onChange={this.handlePreviousPatternChange}
+          />
+          <label htmlFor="pattern-fluctuating">Fluctuating</label>
+          <input
+            id="pattern-small-spike"
+            type="radio"
+            value="3"
+            checked={previousPattern === 3}
+            onChange={this.handlePreviousPatternChange}
+          />
+          <label htmlFor="pattern-small-spike">Small spike</label>
+          <input
+            id="pattern-large-spike"
+            type="radio"
+            value="1"
+            checked={previousPattern === 1}
+            onChange={this.handlePreviousPatternChange}
+          />
+          <label htmlFor="pattern-large-spike">Large spike</label>
+          <input
+            id="pattern-decreasing"
+            type="radio"
+            value="2"
+            checked={previousPattern === 2}
+            onChange={this.handlePreviousPatternChange}
+          />
+          <label htmlFor="pattern-decreasing">Decreasing</label>
         </div>
-        <div>
+        <div className="price-input">
           <h1>Price of Turnips</h1>
-          <div>
+          <div className="secondary-text">
             What was the price of your turnips this week, on your island?
           </div>
           <p>Sunday</p>
@@ -258,18 +255,14 @@ class Predictions extends React.Component {
           />
           <p>Monday - Saturday</p>
           {prices.map((item, i) => (
-            // <TextField
-            //   key={i}
-            //   type="number"
-            //   value={item}
-            //   onChange={(e) => this.handlePricesChange(e.target.value, i)}
-            // />
-            <input
-              type="number"
-              key={i}
-              value={item}
-              onChange={(e) => this.handlePricesChange(e.target.value, i)}
-            />
+            <span>
+              <input
+                type="number"
+                key={i}
+                value={item}
+                onChange={(e) => this.handlePricesChange(e.target.value, i)}
+              />
+            </span>
           ))}
         </div>
         <div>

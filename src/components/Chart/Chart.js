@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
+let pat_desc = {
+  0: "fluctuating",
+  1: "large-spike",
+  2: "decreasing",
+  3: "small-spike",
+  4: "all",
+};
+
 const PriceChart = (props) => {
-  let pat_desc = {
-    0: "fluctuating",
-    1: "large-spike",
-    2: "decreasing",
-    3: "small-spike",
-    4: "all",
-  };
-
-  let minArray = [];
-  if (props.results != undefined || props.results != null) {
-    props.results.map((res, i) => {
-      if (pat_desc[res.pattern_number] == "all")
-        minArray.push(res.prices.slice(2).map((day) => day.min));
-    });
+  function setPricesMin() {
+    let minArray = [];
+    if (props.results != undefined || props.results != null) {
+      props.results.map((res, i) => {
+        if (pat_desc[res.pattern_number] == "all")
+          minArray.push(res.prices.slice(2).map((day) => day.min));
+      });
+    }
+    let pricesMin = minArray[0];
+    return pricesMin;
   }
-  let pricesMin = minArray[0];
 
-  let maxArray = [];
-  if (props.results != undefined || props.results != null) {
-    props.results.map((res, i) => {
-      if (pat_desc[res.pattern_number] == "all")
-        maxArray.push(res.prices.slice(2).map((day) => day.max));
-    });
+  function setPricesMax() {
+    let maxArray = [];
+    if (props.results != undefined || props.results != null) {
+      props.results.map((res, i) => {
+        if (pat_desc[res.pattern_number] == "all")
+          maxArray.push(res.prices.slice(2).map((day) => day.max));
+      });
+    }
+    let pricesMax = maxArray[0];
+    return pricesMax;
   }
-  let pricesMax = maxArray[0];
 
   const [dataChart, setDataChart] = useState({});
 
@@ -49,7 +55,7 @@ const PriceChart = (props) => {
       datasets: [
         {
           label: "Prices min",
-          data: pricesMin,
+          data: setPricesMin(),
           fill: "+1",
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -59,7 +65,7 @@ const PriceChart = (props) => {
         },
         {
           label: "Prices Max",
-          data: pricesMax,
+          data: setPricesMax(),
           fill: false,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -69,7 +75,7 @@ const PriceChart = (props) => {
         },
       ],
     });
-  }, [pricesMax, pricesMin]);
+  }, [props.results]);
 
   return (
     <div>
