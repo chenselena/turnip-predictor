@@ -28,15 +28,6 @@ const displayPercentage = function (fraction) {
 };
 /* ******* */
 
-const weekdays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 function GetPredictionPrices(props) {
   if (
     props.firstBuy == null ||
@@ -66,6 +57,16 @@ function GetPredictionPrices(props) {
       props.previousPattern
   );
   let results = predict.analyze_possibilities();
+
+  const weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   return (
     <div>
       <div
@@ -255,14 +256,18 @@ class Predictions extends React.Component {
           />
           <p>Monday - Saturday</p>
           {prices.map((item, i) => (
-            <span>
-              <input
-                type="number"
-                key={i}
-                value={item}
-                onChange={(e) => this.handlePricesChange(e.target.value, i)}
-              />
-            </span>
+            // <TextField
+            //   key={i}
+            //   type="number"
+            //   value={item}
+            //   onChange={(e) => this.handlePricesChange(e.target.value, i)}
+            // />
+            <input
+              type="number"
+              key={i}
+              value={item}
+              onChange={(e) => this.handlePricesChange(e.target.value, i)}
+            />
           ))}
         </div>
         <div>
