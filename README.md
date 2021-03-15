@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Turnip Predictor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A turnip price predictor for Animal Crossing: New Horizons.
 
 ## Available Scripts
 
