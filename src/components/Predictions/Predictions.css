@@ -26,33 +26,33 @@
 
 .input-buttons label {
   display: inline-block;
-  background-color: #7ccfae;
+  background-color: #9edbc3;
   padding: 10px 20px;
   font-family: "Varela Round", sans-serif;
   font-weight: bold;
   font-size: 16px;
-  border: 2px dashed #06a27a;
+  border: 2px dashed #5bb5a0;
   border-radius: 8px;
   margin: 7px;
-  color: #238770;
+  color: #43ab93;
   box-shadow: 0.3px 0px 3px #ada995;
 }
 
 .input-buttons input[type="radio"]:checked + label {
-  background-color: #33ab8f;
-  border-color: #7ccfae;
+  background-color: #5bb5a0;
+  border-color: #9edbc3;
   color: #fff;
 }
 
 .input-buttons input[type="radio"]:focus + label {
-  background-color: #33ab8f;
-  border: 2px dashed #7ccfae;
+  background-color: #5bb5a0;
+  border: 2px dashed #c9f0e7;
   color: #fff;
 }
 
 .input-buttons input[type="radio"]:hover + label {
-  background-color: #33ab8f;
-  border: 2px dashed #7ccfae;
+  background-color: #5bb5a0;
+  border: 2px dashed #c9f0e7;
   box-shadow: 2px 3.5px 7px #ada995;
   color: #fff;
 }
@@ -82,4 +82,104 @@
   font-size: 1.2em;
   font-family: "Varela Round", sans-serif;
   font-weight: bold;
+}
+
+.price-input h2 {
+  color: #7c6b51;
+  font-size: 1em;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  padding-bottom: 3px;
+}
+
+.price-input input:focus {
+  outline-width: 1px;
+  outline-color: #ada995;
+}
+
+.price-input input {
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 10px 2px 10px 2px;
+  width: 100px;
+  color: #bdbdbd;
+  border-radius: 7px;
+  border: 1px;
+  border-color: #ada995;
+  text-align: center;
+  box-shadow: 0.3px 0px 3px #ada995;
+}
+
+.buy-price-input input {
+  border-radius: "8px";
+  border-width: "0.1px";
+  padding: "6.5px";
+  width: "100px";
+  text-align: "center";
+}
+
+.daily-price-input {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-height: 150px;
+  max-width: 86%;
+  margin: auto;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.daily-price-input > * {
+  flex: 1 1 auto;
+  padding: 3px;
+}
+
+.daily-price-input input:focus {
+  outline-width: 2px;
+  outline-color: #c9f0e7;
+}
+
+.daily-price-input input {
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 10px 2px 10px 2px;
+  width: 100px;
+  color: #bdbdbd;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: #c9f0e7;
+  text-align: center;
+  box-shadow: 0.3px 0px 3px #ada995;
+}
+
+.daily-price-input label {
+  display: block;
+  padding-top: 3px;
+  color: #7c6b51;
+  padding-bottom: 3px;
+  font-size: 0.9em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.results-container {
+}
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  background: rgb(216, 241, 225);
+  padding: 35px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0.25px 0px 4px #7a9e97;
+  width: 75%;
 }

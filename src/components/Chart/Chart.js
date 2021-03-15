@@ -54,17 +54,17 @@ const PriceChart = (props) => {
       ],
       datasets: [
         {
-          label: "Prices min",
+          label: "Guaranteed Min",
           data: setPricesMin(),
           fill: "+1",
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
+            "rgba(91, 181, 175, 0.5)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
           ],
         },
         {
-          label: "Prices Max",
+          label: "Potential Max",
           data: setPricesMax(),
           fill: false,
           backgroundColor: [
