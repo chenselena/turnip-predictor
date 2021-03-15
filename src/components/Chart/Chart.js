@@ -81,7 +81,7 @@ const PriceChart = (props) => {
     <div>
       <Line
         data={dataChart}
-        width={200}
+        width={190}
         height={300}
         options={{
           maintainAspectRatio: false,
