@@ -2,6 +2,7 @@ import React from "react";
 
 import DaisyMae from "./DaisyMae/DaisyMae";
 import Predictions from "./Predictions/Predictions";
+import Footer from "./Footer/Footer";
 
 import "../css/Main.css";
 class Main extends React.Component {
@@ -14,6 +15,10 @@ class Main extends React.Component {
 
         <div className="predictions">
           <Predictions />
+        </div>
+
+        <div>
+          <Footer />
         </div>
       </div>
     );
