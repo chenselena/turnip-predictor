@@ -79,7 +79,14 @@ const PriceChart = (props) => {
 
   return (
     <div>
-      <Line data={dataChart} />
+      <Line
+        data={dataChart}
+        width={200}
+        height={300}
+        options={{
+          maintainAspectRatio: false,
+        }}
+      />
     </div>
   );
 };

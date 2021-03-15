@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.prediction-container {
+.questions-container {
   background: #fffae4;
   padding: 35px;
   text-align: center;
@@ -169,17 +169,12 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.results-container {
-}
-
 .chart-container {
-  display: flex;
-  align-items: center;
   margin-top: 30px;
   background: rgb(216, 241, 225);
   padding: 35px;
   text-align: center;
   border-radius: 18px;
   box-shadow: 0.25px 0px 4px #7a9e97;
-  width: 75%;
+  /* width: 75%; */
 }

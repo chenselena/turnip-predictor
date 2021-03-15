@@ -78,7 +78,7 @@ function GetPredictionPrices(props) {
   ];
 
   return (
-    <div className="results-container">
+    <div>
       <div className="chart-container">
         <PriceChart results={results} />
       </div>
@@ -184,8 +184,8 @@ class Predictions extends React.Component {
     console.log("is first buy: " + firstBuy);
     console.log("These are prices" + prices);
     return (
-      <div>
-        <div className="prediction-container">
+      <div className="predictions-container">
+        <div className="questions-container">
           <div className="input-buttons">
             <h1>Is this your first time buying turnips?</h1>
             <div className="secondary-text">This will affect your pattern!</div>
