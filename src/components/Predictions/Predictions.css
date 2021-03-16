@@ -179,10 +179,25 @@ input::-webkit-inner-spin-button {
   /* width: 75%; */
 }
 
+.chart-container-no {
+  margin-top: 30px;
+  background: rgb(216, 241, 225);
+  padding: 35px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0.25px 0px 4px #7a9e97;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #696969;
+  padding-bottom: 20px;
+  /* width: 75%; */
+}
+
 .prices-table {
   margin-top: 30px;
   background: #d8f1f1;
-  padding: 35px;
+  padding: 15px;
   text-align: center;
   border-radius: 18px;
   box-shadow: 0.25px 0px 4px #7a9e97;
@@ -190,15 +205,30 @@ input::-webkit-inner-spin-button {
 
 .prices-table table {
   font-family: "Varela Round", sans-serif;
-  padding: 5px;
+  padding: 0px;
+  margin: auto;
+  width: 100%;
 }
 
 .prices-table table thead {
-  font-size: 0.9em;
+  font-size: 0.83em;
   font-weight: bold;
+  color: #509191;
+}
+
+.prices-table table thead tr th span {
+  font-size: 0.84em;
+  color: #7bb8b8;
+  padding: 4px;
 }
 
 .prices-table table tbody {
-  font-size: 0.9em;
-  background-color: #fff;
+  font-size: 0.8em;
+  background-color: #ebfafa;
+  white-space: nowrap;
+  color: #8c8c8c;
+}
+
+.prices-table table tbody td {
+  padding: 3.5px;
 }

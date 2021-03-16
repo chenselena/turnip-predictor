@@ -77,51 +77,70 @@ function GetPredictionPrices(props) {
     "Saturday",
   ];
 
-  return (
-    <div>
-      <div className="chart-container">
-        <PriceChart results={results} />
+  if (isNaN(props.prices[1])) {
+    return (
+      <div>
+        <div className="chart-container-no">
+          <PriceChart results={results} />
+          <div style={{ paddingTop: "10px" }}>
+            Hmmm... come back in the afternoon and let us know your PM price.
+            You may get lucky!
+          </div>
+        </div>
       </div>
-      <div className="prices-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Pattern</th>
-              <th>% Chance</th>
-              {weekdays.map((day) => (
-                <th colSpan={2}>
-                  <div>{day}</div>
-                  <span>AM</span>
-                  <span>PM</span>
-                </th>
-              ))}
-              <th>Guaranteed Minimum</th>
-              <th>Potential Maximum</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((res, i) => (
-              <tr key={i}>
-                <td>{pat_desc[res.pattern_number]}</td>
-                <td>{displayPercentage(res.category_total_probability)}</td>
-                {res.prices.slice(2).map((day) =>
-                  day.min == day.max ? (
-                    <td>{day.min}</td>
-                  ) : (
-                    <td>
-                      {day.min} to {day.max}
-                    </td>
-                  )
-                )}
-                <td>{res.weekGuaranteedMinimum}</td>
-                <td>{res.weekMax}</td>
+    );
+  } else {
+    return (
+      <div>
+        <div className="chart-container">
+          <PriceChart results={results} />
+        </div>
+        <div className="prices-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Pattern</th>
+                <th>% Chance</th>
+                {weekdays.map((day) => (
+                  <th colSpan={2}>
+                    <div>{day}</div>
+                    <span>AM</span>
+                    <span>PM</span>
+                  </th>
+                ))}
+                <th>Expected Min</th>
+                <th>Likely Max</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {results.map((res, i) =>
+                displayPercentage(res.category_total_probability) !=
+                "<0.01%" ? (
+                  <tr key={i}>
+                    <td>{pat_desc[res.pattern_number]}</td>
+                    <td>{displayPercentage(res.category_total_probability)}</td>
+                    {res.prices.slice(2).map((day) =>
+                      day.min == day.max ? (
+                        <td>{day.min}</td>
+                      ) : (
+                        <td>
+                          {day.min}~{day.max}
+                        </td>
+                      )
+                    )}
+                    <td>{res.weekGuaranteedMinimum}</td>
+                    <td>{res.weekMax}</td>
+                  </tr>
+                ) : (
+                  <span></span>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 class Predictions extends React.Component {
