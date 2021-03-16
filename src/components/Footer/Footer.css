@@ -13,8 +13,8 @@
 }
 
 .footer-name {
-  background: #ff9b3d;
-  color: #be4e0c;
+  background: rgb(255, 243, 107);
+  color: rgb(240, 180, 66);
   font-family: "Varela Round", sans-serif;
   font-weight: bold;
   padding: 1rem;
@@ -42,7 +42,7 @@
 }
 
 .orange {
-  color: #e58e03;
+  color: rgb(240, 180, 66);
 }
 
 .isabelle-img {

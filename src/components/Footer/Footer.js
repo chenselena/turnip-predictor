@@ -13,9 +13,26 @@ class Footer extends React.Component {
           After your prices have been inputted, we will continually try and
           predict what prices or patterns you will get next!
           <br />
-          Credit to Ninji's amazing work on data-mining the turnip pricing code
-          and mikebryant's creation of the pricing algorithm in JavaScript.
-          Designed and created by chenselena 💕
+          Credit to{" "}
+          <a
+            className="orange"
+            href="https://twitter.com/_Ninji/status/1244818665851289602?s=20"
+          >
+            Ninji's
+          </a>{" "}
+          amazing work on data-mining the turnip pricing code and{" "}
+          <a
+            className="orange"
+            href="https://github.com/mikebryant/ac-nh-turnip-prices"
+          >
+            mikebryant's{" "}
+          </a>
+          creation of the pricing algorithm in JavaScript. Designed and created
+          by{" "}
+          <a className="orange" href="https://github.com/chenselena">
+            chenselena
+          </a>{" "}
+          💕
         </div>
         <div className="isabelle-img">
           <img src={Isabelle} alt="DaisyMaeImg" />
