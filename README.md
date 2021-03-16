@@ -2,6 +2,8 @@
 
 A turnip price predictor for Animal Crossing: New Horizons 🐶. You can try it [here](https://turnip-predictor.herokuapp.com/).
 
+![alt-text](https://github.com/chenselena/turnip-predictor/blob/main/turnip-predictor.gif)
+
 ## Local Deployment
 
 In the project directory, you can run:
