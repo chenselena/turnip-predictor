@@ -1,6 +1,8 @@
 # Turnip Predictor 🍠
 
-A turnip price predictor for Animal Crossing: New Horizons 🐶. You can try it [here](https://turnip-predictor.herokuapp.com/).
+A turnip price predictor for Animal Crossing: New Horizons 🐶. You can enter your prices for the week and watch the predictor accurately predict your prices!
+
+You can try it [here](https://turnip-predictor.herokuapp.com/).
 
 ![alt-text](https://github.com/chenselena/turnip-predictor/blob/main/turnip-predictor.gif)
 
