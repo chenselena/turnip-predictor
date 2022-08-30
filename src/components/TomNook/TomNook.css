@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+* {
+  margin: 0;
+}
+
+.tom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.tom-name {
+  background: #df852d;
+  color: #631807;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 18px;
+  font-size: 1em;
+  z-index: 2;
+  margin-right: 76%;
+  margin-bottom: 16%;
+  position: absolute;
+}
+
+.tom-text {
+  background: #fffae4;
+  font-family: "Varela Round", sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: #7c6b51;
+  border-radius: 25px;
+  padding: 1.9rem 1.85rem 1.5rem;
+  width: 30rem;
+  box-shadow: 0.25px 0px 4px #7a9e97;
+  line-height: 1.7em;
+  z-index: 1;
+  position: relative;
+  margin-top: 60px;
+}
+
+.orange {
+  color: rgb(240, 180, 66);
+}
+
+.tom-img {
+  padding-left: 30px;
+  padding-top: 10px;
+}

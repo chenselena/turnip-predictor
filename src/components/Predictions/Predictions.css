@@ -232,3 +232,45 @@ input::-webkit-inner-spin-button {
 .prices-table table tbody td {
   padding: 3.5px;
 }
+
+.sold-button {
+  display: inline-block;
+  background-color: #c1ebf7;
+  padding: 9px 19px;
+  font-family: "Varela Round", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px dashed #a5dff0;
+  border-radius: 8px;
+  margin: 7px;
+  color: #81cade;
+  box-shadow: 0.3px 0px 3px #ada995;
+}
+
+.sold-button:checked {
+  background-color: #80d5ed;
+  border-color: #a5dff0;
+  color: #fff;
+}
+
+.sold-button:focus {
+  background-color: #80d5ed;
+  border: 2px dashed #a5dff0;
+  color: #fff;
+}
+
+.sold-button:hover {
+  background-color: #80d5ed;
+  border: 2px dashed #a5dff0;
+  box-shadow: 2px 3.5px 7px #ada995;
+  color: #fff;
+}
+
+.sold-button-wrapper {
+  padding-top: 20px;
+}
+
+.sold-class {
+  color: #7c6b51;
+  padding-top: 30px;
+}

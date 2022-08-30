@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './components/Main.js';
+// import Main from './components/Main.js';
+import AppRouter from "./router/AppRouter";
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Main />
-  </React.StrictMode>,
+ReactDOM.render(<AppRouter />,
+  // <React.StrictMode>
+  //   <Main />
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+* {
+  margin: 0;
+}
+
+.previous-prices-container {
+  background-image: url("../images/background.png");
+  background-repeat: repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tom-spacing {
+  position: absolute;
+  top: 55px;
+}
+
+.previous-prices-table {
+  background: #fffae4;
+  padding: 15px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0.25px 0px 4px #7a9e97;
+  width: 61.5%;
+  margin-top: -50px;
+}
+
+.previous-prices-table table {
+  font-family: "Varela Round", sans-serif;
+  padding: 0px;
+  margin: auto;
+  width: 100%;
+}
+
+.previous-prices-table table thead {
+  font-size: 0.94em;
+  font-weight: bold;
+  color: #7c6b51;
+}
+
+.previous-prices-table table thead tr th span {
+  font-size: 0.94em;
+  color: #a69274;
+  padding: 4px;
+}
+
+.previous-prices-table table tbody {
+  font-size: 0.92em;
+  white-space: nowrap;
+  color: #7c6b51;
+  border-bottom: 5px olive;
+}
+
+.previous-prices-table table tbody tr:nth-child(odd) {
+  background-color: #f0ebd5;
+}
+
+.previous-prices-table table tbody tr td {
+  padding: 3.5px;
+}
